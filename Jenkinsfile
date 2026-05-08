@@ -28,11 +28,8 @@ pipeline {
         stage('Deploy to Minikube') {
             steps {
                 sh '''
-                eval $(minikube docker-env)
-
-                docker build -t nodejs-app:latest .
-
-              
+                    docker build -t nodejs-app:latest .
+                    minikube image load nodejs-app:latest              
                 '''
             }
         }
