@@ -2,7 +2,10 @@ pipeline {
     agent any
 
     environment {
+        APP_NAME = "nodejs-app"
         IMAGE_NAME = "nodejs-app"
+        NAMESPACE = "default"
+
     }
 
     stages {
@@ -34,12 +37,21 @@ pipeline {
             }
         }
 
-        stage('Verify Deployment') {
+      stage('Verify Deployment') {
             steps {
-                sh 'kubectl get pods'
-                
-                sh 'kubectl get svc'
+                sh '''
+                echo "Checking pods..."
+
+                kubectl get pods -n ${NAMESPACE}
+
+                echo "Checking services..."
+
+                kubectl get svc -n ${NAMESPACE}
+
+                echo "Deployment verified successfully"
+                '''
             }
         }
+
     }
 }
