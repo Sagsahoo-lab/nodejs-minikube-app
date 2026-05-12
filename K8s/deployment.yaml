@@ -15,7 +15,7 @@ spec:
       containers:
       - name: nodejs-app
         image: nodejs-minikube-app:latest
-        imagePullPolicy: Never
+        imagePullPolicy: Always
         ports:
         - containerPort: 3000
         readinessProbe:
