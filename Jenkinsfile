@@ -4,7 +4,7 @@ pipeline {
     environment {
         APP_NAME = "nodejs-app"
         IMAGE_NAME = "nodejs-app"
-        NAMESPACE = "default"
+        namespace = "jenkins"
         KUBECONFIG = "/var/lib/jenkins/.kube/config"
 
     }
