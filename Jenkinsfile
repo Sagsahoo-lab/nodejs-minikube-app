@@ -29,17 +29,17 @@ pipeline {
             }
         }
 
-                stage('Deploy to Minikube') {
-            steps {
-                sh '''
-                echo "Deploying application to Minikube..."
+                stage('Deploy to Kubernetes') {
+    steps {
 
-                kubectl apply -f K8s/deployment.yaml
-                kubectl apply -f K8s/service.yaml
+        sh 'kubectl version --client'
 
-                
-            }
+        sh 'kubectl apply -f k8s/deployment.yaml'
+
+        sh 'kubectl apply -f k8s/service.yaml'
+
         }
+}
 
 
       stage('Verify Deployment') {
