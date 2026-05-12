@@ -4,7 +4,7 @@ pipeline {
     environment {
         APP_NAME = "nodejs-app"
         IMAGE_NAME = "nodejs-app"
-        namespace = "jenkins"
+        NAMESPACE = "jenkins"
         KUBECONFIG = "/var/lib/jenkins/.kube/config"
 
     }
@@ -29,14 +29,23 @@ pipeline {
             }
         }
 
-        stage('Deploy to Minikube') {
+                stage('Deploy to Minikube') {
             steps {
                 sh '''
-                    docker build -t nodejs-app:latest .
-                    minikube image load nodejs-app:latest              
+                echo "Deploying application to Minikube..."
+
+                kubectl apply -f deployment.yaml
+                kubectl apply -f service.yaml
+
+                echo "Waiting for deployment rollout..."
+
+                kubectl rollout status deployment/${APP_NAME} \
+                --namespace=${NAMESPACE} \
+                --timeout=180s
                 '''
             }
         }
+
 
       stage('Verify Deployment') {
             steps {
