@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         APP_NAME = "nodejs-app"
-        IMAGE_NAME = "nodejs-app"
+        IMAGE_NAME = "saga12saho/nodejs-app"
         NAMESPACE = "jenkins"
         KUBECONFIG = "/var/lib/jenkins/.kube/config"
 
