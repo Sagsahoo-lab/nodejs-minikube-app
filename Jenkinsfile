@@ -34,8 +34,8 @@ pipeline {
                 sh '''
                 echo "Deploying application to Minikube..."
 
-                kubectl apply -f deployment.yaml
-                kubectl apply -f service.yaml
+                kubectl apply -f K8s/deployment.yaml
+                kubectl apply -f K8s/service.yaml
 
                 echo "Waiting for deployment rollout..."
 
