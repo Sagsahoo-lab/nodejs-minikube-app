@@ -38,6 +38,9 @@ pipeline {
 
         sh 'kubectl apply -f K8s/service.yaml'
 
+        sh 'kubectl get pods -n ${NAMESPACE}'
+
+
         }
 }
 
