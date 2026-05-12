@@ -29,6 +29,12 @@ pipeline {
             }
         }
 
+         stage('Push Docker Image') {
+            steps {
+                sh 'docker push $IMAGE_NAME'
+            }
+        }
+
                 stage('Deploy to Kubernetes') {
     steps {
 
