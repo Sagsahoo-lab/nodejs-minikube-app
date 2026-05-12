@@ -34,9 +34,9 @@ pipeline {
 
         sh 'kubectl version --client'
 
-        sh 'kubectl apply -f k8s/deployment.yaml'
+        sh 'kubectl apply -f K8s/deployment.yaml'
 
-        sh 'kubectl apply -f k8s/service.yaml'
+        sh 'kubectl apply -f K8s/service.yaml'
 
         }
 }
