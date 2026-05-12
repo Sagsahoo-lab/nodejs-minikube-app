@@ -37,12 +37,7 @@ pipeline {
                 kubectl apply -f K8s/deployment.yaml
                 kubectl apply -f K8s/service.yaml
 
-                echo "Waiting for deployment rollout..."
-
-                kubectl rollout status deployment/${APP_NAME} \
-                --namespace=${NAMESPACE} \
-                --timeout=180s
-                '''
+                
             }
         }
 
