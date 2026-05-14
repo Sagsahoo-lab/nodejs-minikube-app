@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: nodejs-app
-        image: nodejs-minikube-app:latest
+        image: saga12saho/nodejs-minikube-app:${BUILD_NUMBER}
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
