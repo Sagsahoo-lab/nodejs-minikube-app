@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         APP_NAME = "nodejs-app"
-        IMAGE_NAME = "myrepo/myapp:${BUILD_NUMBER}"
+        IMAGE_NAME = "saga12saho/nodejs-app:${BUILD_NUMBER}"
         NAMESPACE = "default"
         KUBECONFIG = "/var/lib/jenkins/.kube/config"
 
