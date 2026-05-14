@@ -62,13 +62,18 @@ pipeline {
                 stage('Deploy to Kubernetes') {
     steps {
 
-        sh 'kubectl version --client'
-
-        sh 'kubectl apply -f K8s/deployment.yaml'
-
-        sh 'kubectl apply -f K8s/service.yaml'
-
+        sh ''' 
         
+        kubectl version --client
+
+        kubectl apply -f K8s/deployment.yaml
+
+        kubectl apply -f K8s/service.yaml
+
+        kubectl set image deployment/nodejs-app \
+            nodejs-app=saga12saho/nodejs-app:${BUILD_NUMBER}
+
+            '''
         }
 }
 
