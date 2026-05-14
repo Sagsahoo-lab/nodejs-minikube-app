@@ -42,6 +42,12 @@ pipeline {
             }
         }
 
+        stage('Login') {
+            steps {
+                sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
+            }
+        }
+
          stage('Push Docker Image') {
             steps {
                 sh 'docker push $IMAGE_NAME'
