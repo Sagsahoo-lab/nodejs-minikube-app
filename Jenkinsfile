@@ -42,6 +42,17 @@ pipeline {
             }
         }
 
+        stage('Debug Before Push') {
+            steps {
+                sh '''
+                    echo "IMAGE=$IMAGE_NAME"
+                    docker images
+                    docker info | grep Username || true
+                    hostname
+                '''
+            }
+        }
+
          stage('Push Docker Image') {
             steps {
                 sh 'docker push $IMAGE_NAME'
